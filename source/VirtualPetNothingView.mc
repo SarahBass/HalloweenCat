@@ -47,8 +47,8 @@ class VirtualPetNothingView extends WatchUi.WatchFace {
  var userBattery = "-";
    if (myStats.battery != null){userBattery = Lang.format("$1$",[((myStats.battery.toNumber())).format("%2d")]);}else{userBattery="-";} 
 
-   var userSTEPS = 0;
-   if (info.steps != null){userSTEPS = info.steps.toNumber();}else{userSTEPS=0;} 
+   var userSTEPS = 3000;
+   //if (info.steps != null){userSTEPS = info.steps.toNumber();}else{userSTEPS=0;} 
 
   var userNotify = "-";
    if (mySettings.notificationCount != null){userNotify = Lang.format("$1$",[((mySettings.notificationCount.toNumber())).format("%2d")]);}else{userNotify="-";} 
@@ -141,6 +141,7 @@ else{userHEART = getHeartRate().toString();}
        var ghost2 = dogPhase4(today.sec, today.min); 
        var stars1 = dogPhase5(today.sec); 
        var stars2 = dogPhase6(today.sec); 
+       var frog = dogPhase7(today.sec); 
        var dog = dogPhase(today.sec, today.min);
        var object = dogPhase2(today.sec, today.min);
        var smallFont =  WatchUi.loadResource( Rez.Fonts.WeatherFont );
@@ -305,10 +306,12 @@ dc.drawText(centerX, flash, wordFont, " % "+userHEART, Graphics.TEXT_JUSTIFY_CEN
 
 }
 //use userSTEPS >= 0 for testing, userSTEPS >= 3000
-       if (userSTEPS >= 0){ 
+       if (userSTEPS >= 3000){ 
         object.draw(dc); 
         stars1.draw(dc);
         stars2.draw(dc);
+if (today.min%10 == 0|| (today.min%10 == 1)|| (today.min%10 == 2)|| (today.min%10 == 3)|| (today.min%10 == 4)){
+frog.draw(dc);}
  
 }else{
 dog.draw(dc);
@@ -757,7 +760,7 @@ var speed =1;
         growY=1.2;
       }
 var venus2Y=mySettings.screenHeight *0.2*growY;
-  var venus2X=mySettings.screenWidth *0.1*growX;
+  var venus2X=mySettings.screenWidth *0.07*growX;
   var dogARRAY;
 
  dogARRAY = [
@@ -824,5 +827,48 @@ var venus2Y=mySettings.screenHeight *0.17*growY;
 
 return dogARRAY[seconds%2];
 }
+
+function dogPhase7(seconds){
+  var mySettings = System.getDeviceSettings();
+ var growX = 1; //0.75 for grow large 1.25 for shrink small 1 for normal or square
+var growY = 1;
+var size = 0;
+var speed =1;     
+      if (System.getDeviceSettings().screenHeight < 301){
+        size =1;
+        growX=1;
+        speed = 0.6;
+        growY=1;
+      }else if (System.getDeviceSettings().screenHeight >= 390){
+        size=2;
+        growX=0.7;
+        speed = 1.25;
+        growY=growX*growX;
+      }else if (mySettings.screenShape != 1){
+        size=0;
+        growX=0.5;
+        speed = 0.9;
+        growY=0.5;
+      }else{
+        size=0;
+        growX=0.8;
+        speed =1;
+        growY=1.2;
+      }
+var venus2X;
+ if (seconds>=35){venus2X = (mySettings.screenHeight *0.75*growX);}else {if(seconds>=25){venus2X=(mySettings.screenWidth*2.5)-((seconds%35)*25*speed);}else{venus2X=(mySettings.screenWidth)-((seconds%35)*25*speed);}}
+  var venus2Y =  (mySettings.screenHeight *0.03*growY)+((seconds%2)*2) ;
+  var dogARRAY =  (new WatchUi.Bitmap({
+            :rezId=>Rez.Drawables.frog,
+            :locX=> venus2X,
+            :locY=>venus2Y
+        }));
+
+
+
+return dogARRAY;
+}
+
+
 
 }
