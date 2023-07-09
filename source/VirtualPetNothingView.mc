@@ -139,6 +139,8 @@ else{userHEART = getHeartRate().toString();}
 
        var ghost1 = dogPhase3(today.sec, today.min); 
        var ghost2 = dogPhase4(today.sec, today.min); 
+       var stars1 = dogPhase5(today.sec); 
+       var stars2 = dogPhase6(today.sec); 
        var dog = dogPhase(today.sec, today.min);
        var object = dogPhase2(today.sec, today.min);
        var smallFont =  WatchUi.loadResource( Rez.Fonts.WeatherFont );
@@ -181,17 +183,18 @@ dc.setColor(0xE7A8FF, Graphics.COLOR_TRANSPARENT);
    //right clouds
    dc.fillEllipse((centerX*1.9)-((today.sec%3)), (centerY*0.75)-((today.sec%3)),  (centerX/4), (centerY/5)); 
    dc.fillEllipse((centerX*1.6)-((today.sec%3)), (centerY*0.8)-((today.sec%3)),  (centerX/5), (centerY/7)); 
-   //right bubble
-   dc.fillCircle((centerX*1.75)-(((today.sec%40)*4)^2), (centerY*0.25)+(today.sec%10),  (centerX/20));  
-   
+
    //left clouds
    dc.fillEllipse((centerX*0.05)+((today.sec%2)), (centerY*0.8)-((today.sec%3)),  (centerX/7), (centerY/7)); 
    dc.fillEllipse((centerX*0.25)+((today.sec%2)), (centerY*0.9)-((today.sec%3)),  (centerX/6), (centerY/6));
    dc.fillEllipse((centerX*-0.01)+((today.sec%2)), (centerY*0.9)-((today.sec%3)),  (centerX/4), (centerY/6));
-   
-   //Left bubble
+   if (userSTEPS>=3000){}else{
+ //right bubble
+   dc.fillCircle((centerX*1.75)-(((today.sec%40)*4)^2), (centerY*0.25)+(today.sec%10),  (centerX/20));  
+  //Left bubble
    dc.fillCircle((centerX*0.25)+((today.sec%30)*4), (centerY*0.5)-((today.sec%30)*4),  (centerX/30));  
    dc.fillCircle((centerX/4)+(((today.sec%60)*4)^2), (centerY*0.25)+(today.sec%60),  (centerX/15));  
+   }
    //BG Water
    dc.setColor(0x7C03B1, Graphics.COLOR_TRANSPARENT);
    dc.fillEllipse(centerX/7, (water)+((today.sec%4)*4), (centerX*3)/4, (centerY/3));
@@ -304,9 +307,16 @@ dc.drawText(centerX, flash, wordFont, " % "+userHEART, Graphics.TEXT_JUSTIFY_CEN
 //use userSTEPS >= 0 for testing, userSTEPS >= 3000
        if (userSTEPS >= 0){ 
         object.draw(dc); 
-        ghost1.draw(dc);
-        ghost2.draw(dc);
-}else{dog.draw(dc);}     
+        stars1.draw(dc);
+        stars2.draw(dc);
+ 
+}else{
+dog.draw(dc);
+if (today.min%20 == 0|| (today.min%20 == 2)|| (today.min%20 == 3)|| (today.min%20 == 4)|| (today.min%20 == 5)){
+ghost1.draw(dc);
+ghost2.draw(dc);}
+
+}     
         
     }
 
@@ -716,6 +726,103 @@ if (seconds>=35){venus2Y=mySettings.screenHeight *0.17*growY;}else {if(seconds>=
 
 
 return dogARRAY[seconds%2+minutes%3];
+}
+
+
+function dogPhase5(seconds){
+  var mySettings = System.getDeviceSettings();
+ var growX = 1; //0.75 for grow large 1.25 for shrink small 1 for normal or square
+var growY = 1;
+var size = 0;
+var speed =1;     
+      if (System.getDeviceSettings().screenHeight < 301){
+        size =1;
+        growX=1;
+        speed = 0.6;
+        growY=1;
+      }else if (System.getDeviceSettings().screenHeight >= 390){
+        size=2;
+        growX=0.7;
+        speed = 1.25;
+        growY=growX*growX;
+      }else if (mySettings.screenShape != 1){
+        size=0;
+        growX=0.5;
+        speed = 0.9;
+        growY=0.5;
+      }else{
+        size=0;
+        growX=0.8;
+        speed =1;
+        growY=1.2;
+      }
+var venus2Y=mySettings.screenHeight *0.2*growY;
+  var venus2X=mySettings.screenWidth *0.1*growX;
+  var dogARRAY;
+
+ dogARRAY = [
+(new WatchUi.Bitmap({
+            :rezId=>Rez.Drawables.stars0,
+            :locX=> venus2X,
+            :locY=>venus2Y
+        })),
+        (new WatchUi.Bitmap({
+            :rezId=>Rez.Drawables.stars1,
+            :locX=> venus2X,
+            :locY=>venus2Y
+        }))
+ ];
+
+
+return dogARRAY[seconds%2];
+}
+
+function dogPhase6(seconds){
+  var mySettings = System.getDeviceSettings();
+ var growX = 1; //0.75 for grow large 1.25 for shrink small 1 for normal or square
+var growY = 1;
+var size = 0;
+var speed =1;     
+      if (System.getDeviceSettings().screenHeight < 301){
+        size =1;
+        growX=1;
+        speed = 0.6;
+        growY=1;
+      }else if (System.getDeviceSettings().screenHeight >= 390){
+        size=2;
+        growX=0.7;
+        speed = 1.25;
+        growY=growX*growX;
+      }else if (mySettings.screenShape != 1){
+        size=0;
+        growX=0.5;
+        speed = 0.9;
+        growY=0.5;
+      }else{
+        size=0;
+        growX=0.8;
+        speed =1;
+        growY=1.2;
+      }
+var venus2Y=mySettings.screenHeight *0.17*growY;
+  var venus2X=mySettings.screenWidth *0.9*growX;
+  var dogARRAY;
+
+ dogARRAY = [
+(new WatchUi.Bitmap({
+            :rezId=>Rez.Drawables.stars0,
+            :locX=> venus2X,
+            :locY=>venus2Y
+        })),
+        (new WatchUi.Bitmap({
+            :rezId=>Rez.Drawables.stars1,
+            :locX=> venus2X,
+            :locY=>venus2Y
+        }))
+ ];
+
+
+return dogARRAY[seconds%2];
 }
 
 }
