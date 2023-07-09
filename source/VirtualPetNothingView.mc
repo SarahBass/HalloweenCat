@@ -165,19 +165,29 @@ else{userHEART = getHeartRate().toString();}
    dc.fillCircle(centerX*0.9, centerY*0.6, centerX*0.4);
 
 
-
-   //dc.setColor(0xF6E3FD, Graphics.COLOR_TRANSPARENT);
-   if (userSTEPS>=3000){dc.setColor(0xFDF6FD, Graphics.COLOR_TRANSPARENT);}else{dc.setColor(0xF6E3FD, Graphics.COLOR_TRANSPARENT);}
+dc.setColor(0xE7A8FF, Graphics.COLOR_TRANSPARENT);
    //right clouds
-   dc.fillEllipse((centerX*1.8)-((today.sec%3)), (centerY*0.6)-((today.sec%3)),  (centerX/3), (centerY/4)); 
-   dc.fillEllipse((centerX*1.5)-((today.sec%3)), (centerY*0.75)-((today.sec%3)),  (centerX/3), (centerY/4)); 
+   dc.fillEllipse((centerX*1.9)-((today.sec%3)), (centerY*0.75)-((today.sec%3)),  (centerX/3), (centerY/4)); 
+   dc.fillEllipse((centerX*1.6)-((today.sec%3)), (centerY*0.8)-((today.sec%3)),  (centerX/4), (centerY/6)); 
+
+//left clouds
+   dc.fillEllipse((centerX*0.05)+((today.sec%2)), (centerY*0.8)-((today.sec%3)),  (centerX/6), (centerY/6)); 
+   dc.fillEllipse((centerX*0.25)+((today.sec%2)), (centerY*0.9)-((today.sec%3)),  (centerX/5), (centerY/5));
+   dc.fillEllipse((centerX*-0.01)+((today.sec%2)), (centerY*0.9)-((today.sec%3)),  (centerX/3), (centerY/5));
+   
+   
+   dc.setColor(0xF6E3FD, Graphics.COLOR_TRANSPARENT);
+   //right clouds
+   dc.fillEllipse((centerX*1.9)-((today.sec%3)), (centerY*0.75)-((today.sec%3)),  (centerX/4), (centerY/5)); 
+   dc.fillEllipse((centerX*1.6)-((today.sec%3)), (centerY*0.8)-((today.sec%3)),  (centerX/5), (centerY/7)); 
    //right bubble
    dc.fillCircle((centerX*1.75)-(((today.sec%40)*4)^2), (centerY*0.25)+(today.sec%10),  (centerX/20));  
    
    //left clouds
-   dc.fillEllipse((centerX*0.05)+((today.sec%2)), (centerY*0.7)-((today.sec%3)),  (centerX/6), (centerY/6)); 
-   dc.fillEllipse((centerX*0.25)+((today.sec%2)), (centerY*0.8)-((today.sec%3)),  (centerX/5), (centerY/5));
-   dc.fillEllipse((centerX*-0.01)+((today.sec%2)), (centerY*0.8)-((today.sec%3)),  (centerX/3), (centerY/5));
+   dc.fillEllipse((centerX*0.05)+((today.sec%2)), (centerY*0.8)-((today.sec%3)),  (centerX/7), (centerY/7)); 
+   dc.fillEllipse((centerX*0.25)+((today.sec%2)), (centerY*0.9)-((today.sec%3)),  (centerX/6), (centerY/6));
+   dc.fillEllipse((centerX*-0.01)+((today.sec%2)), (centerY*0.9)-((today.sec%3)),  (centerX/4), (centerY/6));
+   
    //Left bubble
    dc.fillCircle((centerX*0.25)+((today.sec%30)*4), (centerY*0.5)-((today.sec%30)*4),  (centerX/30));  
    dc.fillCircle((centerX/4)+(((today.sec%60)*4)^2), (centerY*0.25)+(today.sec%60),  (centerX/15));  
