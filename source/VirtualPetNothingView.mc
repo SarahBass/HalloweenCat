@@ -146,6 +146,7 @@ else{userHEART = getHeartRate().toString();}
        var small =  WatchUi.loadResource( Rez.Fonts.smallFont );
        var xsmall =  WatchUi.loadResource( Rez.Fonts.xsmallFont );
        var flash = centerY*1.8;
+       var water = centerY*1.25;
       View.onUpdate(dc);
    
    
@@ -182,16 +183,23 @@ else{userHEART = getHeartRate().toString();}
    dc.fillCircle((centerX/4)+(((today.sec%60)*4)^2), (centerY*0.25)+(today.sec%60),  (centerX/15));  
    //BG Water
    dc.setColor(0x7C03B1, Graphics.COLOR_TRANSPARENT);
-   dc.fillEllipse(centerX/7, (centerY)+((today.sec%4)*4), (centerX*3)/4, (centerY/3));
-   dc.fillEllipse((centerX*1.5)-((today.sec%4)*4), (centerY*1.2)-((today.sec%4)*4),  (centerX), (centerY/2)); 
-   dc.fillEllipse((centerX*0.7)+((today.sec%4)*4), (centerY*1.2)-((today.sec%4)*4),  (centerX), (centerY/2)); 
-   dc.fillEllipse((centerX*2), ((centerY*15)/16)+((today.sec%4)*4), (centerX*3)/4, (centerY/3)); 
+   dc.fillEllipse(centerX/7, (water)+((today.sec%4)*4), (centerX*3)/4, (centerY/3));
+   dc.fillEllipse((centerX*1.5)-((today.sec%4)*4), (water*1.2)-((today.sec%4)*4),  (centerX), (centerY/2)); 
+   dc.fillEllipse((centerX*0.7)+((today.sec%4)*4), (water*1.2)-((today.sec%4)*4),  (centerX), (centerY/2)); 
+   dc.fillEllipse((centerX*2), ((water*15)/16)+((today.sec%4)*4), (centerX*3)/4, (centerY/3)); 
+
+//BG water line
+   dc.setColor(0x43025C, Graphics.COLOR_TRANSPARENT);
+   dc.fillEllipse(centerX/7, (water*1.05)+((today.sec%4)*4), (centerX*3)/4, (centerY/3));
+   dc.fillEllipse((centerX*1.5)-((today.sec%4)*4), (water*1.25)-((today.sec%4)*4),  (centerX), (centerY/2)); 
+   dc.fillEllipse((centerX*0.7)+((today.sec%4)*4), (water*1.25)-((today.sec%4)*4),  (centerX), (centerY/2)); 
+   dc.fillEllipse((centerX*1.8), (water*1.05)+((today.sec%4)*4), (centerX*3)/4, (centerY/3)); 
 
    //Foreground Water
    dc.setColor(0x270135, Graphics.COLOR_TRANSPARENT);
-   dc.fillEllipse(centerX/4, ((centerY*5)/4)+((today.sec%3)*2), (centerX*5)/4, (centerY/2)); 
-   dc.fillEllipse((centerX*6)/4, ((centerY*5)/4)+(today.sec%3), (centerX*6)/4, (centerY/2)); 
-   dc.fillEllipse(centerX, centerY*2, (centerX*6)/4, (centerY/2)); 
+   dc.fillEllipse(centerX/4, ((water*5)/4)+((today.sec%3)*2), (centerX*5)/4, (centerY/2)); 
+   dc.fillEllipse((centerX*6)/4, ((water*5)/4)+(today.sec%3), (centerX*6)/4, (centerY/2)); 
+   dc.fillEllipse(centerX, water*2, (centerX*6)/4, (centerY/2)); 
 
 //bubbles
    dc.setColor(0xE7A8FF, Graphics.COLOR_TRANSPARENT);
