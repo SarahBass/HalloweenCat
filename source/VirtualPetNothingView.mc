@@ -232,29 +232,29 @@ if (userSTEPS>=3000){}else{
         dc.drawText(centerX,centerY*1.45,xsmall,(weekdayArray[today.day_of_week]+" , "+ monthArray[today.month]+" "+ today.day +" " +today.year), Graphics.TEXT_JUSTIFY_CENTER );
         dc.setColor(0xFFFFFF, Graphics.COLOR_TRANSPARENT);
        dc.drawText(centerX,  centerY*0.87,LargeFont, timeString,  Graphics.TEXT_JUSTIFY_CENTER  );
-
        dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
 if (today.sec%20==0 || today.sec%20==1 || today.sec%20==2 ){ 
   dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
 dc.drawText( centerX,  centerY*1.7, small,  (" ! "), Graphics.TEXT_JUSTIFY_RIGHT );
 dc.drawText( centerX, centerY*1.7, wordFont,  (""+userBattery), Graphics.TEXT_JUSTIFY_LEFT );}
+
 else if (today.sec%20==3 || today.sec%20==4 || today.sec%20==5 ){
-  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
+  dc.setColor(0xF49B7B, Graphics.COLOR_TRANSPARENT);
 dc.drawText( centerX,  centerY*1.7, small,  (" ^ "), Graphics.TEXT_JUSTIFY_RIGHT );
 dc.drawText( centerX, centerY*1.7, wordFont,  (""+userCAL), Graphics.TEXT_JUSTIFY_LEFT );}
 else if (today.sec%20==6 ||today.sec%20==7 || today.sec%20==8  ){  
-  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
+  dc.setColor(0xE7A8FF, Graphics.COLOR_TRANSPARENT);
 dc.drawText(centerX, centerY*1.7, small, " % ",Graphics.TEXT_JUSTIFY_RIGHT);      
 dc.drawText(centerX, centerY*1.7, wordFont, userHEART, Graphics.TEXT_JUSTIFY_LEFT ); }
 else if (today.sec%20==9 ||today.sec%20==10 || today.sec%20==11 || today.sec%20==12 || today.sec%20==13  ){  
-dc.setColor(0x0BCBFF, Graphics.COLOR_TRANSPARENT);   
+dc.setColor(0xFFFF35, Graphics.COLOR_TRANSPARENT);   
 dc.drawText(centerX, centerY*1.7, small, " a ",Graphics.TEXT_JUSTIFY_LEFT); 
 dc.drawText(centerX, centerY*1.65, xsmall, "          "+userAlarm+"          ", Graphics.TEXT_JUSTIFY_LEFT );     
-dc.setColor(0xFFFF35, Graphics.COLOR_TRANSPARENT);  
+dc.setColor(0xFFB200, Graphics.COLOR_TRANSPARENT);  
 dc.drawText(centerX, centerY*1.7, small, " a ",Graphics.TEXT_JUSTIFY_RIGHT); 
 dc.drawText(centerX, centerY*1.65, xsmall, "          "+userNotify+"          ", Graphics.TEXT_JUSTIFY_RIGHT );  }
 else{
-  dc.setColor(0x2AFA3F, Graphics.COLOR_TRANSPARENT);
+  dc.setColor(0xEE748B, Graphics.COLOR_TRANSPARENT);
 dc.drawText(centerX, centerY*1.7, small, (" a "), Graphics.TEXT_JUSTIFY_RIGHT );
   dc.drawText(centerX, centerY*1.7, wordFont, (""+userSTEPS), Graphics.TEXT_JUSTIFY_LEFT );}
 
@@ -300,8 +300,6 @@ dc.drawText(centerX, flash, wordFont, " % "+userHEART, Graphics.TEXT_JUSTIFY_CEN
   dc.setColor(0xEE748B, Graphics.COLOR_TRANSPARENT);
   dc.drawText(centerX, flash, wordFont, (" a "+userSTEPS), Graphics.TEXT_JUSTIFY_CENTER );}
 }
-
-
 
 
 }
@@ -744,9 +742,9 @@ var growY = 1;
 //var speed =1;     
       if (System.getDeviceSettings().screenHeight < 301){
         //size =1;
-        growX=1.2;
+        growX=0.5;
         //speed = 0.6;
-        growY=1.2;
+        growY=0.4;
       }else if (System.getDeviceSettings().screenHeight >= 390){
         //size=2;
         growX=0.7;
@@ -792,9 +790,9 @@ var growY = 1;
 //var speed =1;     
       if (System.getDeviceSettings().screenHeight < 301){
        // size =1;
-        growX=1;
+        growX=0.7;
         //speed = 0.6;
-        growY=1;
+        growY=0.3;
       }else if (System.getDeviceSettings().screenHeight >= 390){
        // size=2;
         growX=0.7;
@@ -840,7 +838,7 @@ var growY = 1;
 var speed =1;     
       if (System.getDeviceSettings().screenHeight < 301){
        // size =1;
-        growX=1;
+        growX=0.8;
         speed = 0.6;
         growY=1;
       }else if (System.getDeviceSettings().screenHeight >= 390){
