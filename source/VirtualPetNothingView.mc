@@ -308,9 +308,13 @@ dc.drawText(centerX, flash, wordFont, " % "+userHEART, Graphics.TEXT_JUSTIFY_CEN
 //use userSTEPS >= 0 for testing, userSTEPS >= 3000
        if (userSTEPS >= 3000){ 
         object.draw(dc); 
+      
+if (System.getDeviceSettings().screenHeight < 301){}else{      
         stars1.draw(dc);
-        stars2.draw(dc);
-if (today.min%10 == 0|| (today.min%10 == 1)|| (today.min%10 == 2)|| (today.min%10 == 3)|| (today.min%10 == 4)){
+        stars2.draw(dc);}
+
+
+if (today.min%10 == 0|| (today.min%10 == 1)|| (today.min%10 == 2)|| (today.min%10 == 3)){
 frog.draw(dc);}
  
 }else{
@@ -499,9 +503,9 @@ var size = 0;
 //var speed =1;     
       if (System.getDeviceSettings().screenHeight < 301){
         size =1;
-        growX=1;
+        growX=1.2;
         //speed = 0.6;
-        growY=1;
+        growY=1.2;
       }else if (System.getDeviceSettings().screenHeight >= 390){
         size=2;
         growX=0.7;
@@ -616,25 +620,25 @@ function dogPhase3(seconds, minutes){
   var mySettings = System.getDeviceSettings();
  var growX = 1; //0.75 for grow large 1.25 for shrink small 1 for normal or square
 var growY = 1;
-var size = 0;
+//var size = 0;
 var speed =1;     
       if (System.getDeviceSettings().screenHeight < 301){
-        size =1;
+        //size =1;
         growX=1;
         speed = 0.6;
         growY=1;
       }else if (System.getDeviceSettings().screenHeight >= 390){
-        size=2;
+        //size=2;
         growX=0.7;
         speed = 1.25;
         growY=growX*growX;
       }else if (mySettings.screenShape != 1){
-        size=0;
+        //size=0;
         growX=0.5;
         speed = 0.9;
         growY=0.5;
       }else{
-        size=0;
+        //size=0;
         growX=0.8;
         speed =1;
         growY=1.2;
@@ -676,25 +680,25 @@ function dogPhase4(seconds, minutes){
   var mySettings = System.getDeviceSettings();
  var growX = 1; //0.75 for grow large 1.25 for shrink small 1 for normal or square
 var growY = 1;
-var size = 0;
+//var size = 0;
 var speed =1;     
       if (System.getDeviceSettings().screenHeight < 301){
-        size =1;
+       // size =1;
         growX=1;
         speed = 0.6;
         growY=1;
       }else if (System.getDeviceSettings().screenHeight >= 390){
-        size=2;
+       // size=2;
         growX=0.7;
         speed = 1.25;
         growY=growX*growX;
       }else if (mySettings.screenShape != 1){
-        size=0;
+       // size=0;
         growX=0.5;
         speed = 0.9;
         growY=0.5;
       }else{
-        size=0;
+       // size=0;
         growX=0.8;
         speed =1;
         growY=1.2;
@@ -736,27 +740,27 @@ function dogPhase5(seconds){
   var mySettings = System.getDeviceSettings();
  var growX = 1; //0.75 for grow large 1.25 for shrink small 1 for normal or square
 var growY = 1;
-var size = 0;
-var speed =1;     
+//var size = 0;
+//var speed =1;     
       if (System.getDeviceSettings().screenHeight < 301){
-        size =1;
-        growX=1;
-        speed = 0.6;
-        growY=1;
+        //size =1;
+        growX=1.2;
+        //speed = 0.6;
+        growY=1.2;
       }else if (System.getDeviceSettings().screenHeight >= 390){
-        size=2;
+        //size=2;
         growX=0.7;
-        speed = 1.25;
+        //speed = 1.25;
         growY=growX*growX;
       }else if (mySettings.screenShape != 1){
-        size=0;
+        //size=0;
         growX=0.5;
-        speed = 0.9;
+        //speed = 0.9;
         growY=0.5;
       }else{
-        size=0;
+        //size=0;
         growX=0.8;
-        speed =1;
+        //speed =1;
         growY=1.2;
       }
 var venus2Y=mySettings.screenHeight *0.2*growY;
@@ -784,27 +788,27 @@ function dogPhase6(seconds){
   var mySettings = System.getDeviceSettings();
  var growX = 1; //0.75 for grow large 1.25 for shrink small 1 for normal or square
 var growY = 1;
-var size = 0;
-var speed =1;     
+//var size = 0;
+//var speed =1;     
       if (System.getDeviceSettings().screenHeight < 301){
-        size =1;
+       // size =1;
         growX=1;
-        speed = 0.6;
+        //speed = 0.6;
         growY=1;
       }else if (System.getDeviceSettings().screenHeight >= 390){
-        size=2;
+       // size=2;
         growX=0.7;
-        speed = 1.25;
+        //speed = 1.25;
         growY=growX*growX;
       }else if (mySettings.screenShape != 1){
-        size=0;
+       // size=0;
         growX=0.5;
-        speed = 0.9;
+        //speed = 0.9;
         growY=0.5;
       }else{
-        size=0;
+       // size=0;
         growX=0.8;
-        speed =1;
+        //speed =1;
         growY=1.2;
       }
 var venus2Y=mySettings.screenHeight *0.17*growY;
@@ -832,25 +836,25 @@ function dogPhase7(seconds){
   var mySettings = System.getDeviceSettings();
  var growX = 1; //0.75 for grow large 1.25 for shrink small 1 for normal or square
 var growY = 1;
-var size = 0;
+//var size = 0;
 var speed =1;     
       if (System.getDeviceSettings().screenHeight < 301){
-        size =1;
+       // size =1;
         growX=1;
         speed = 0.6;
         growY=1;
       }else if (System.getDeviceSettings().screenHeight >= 390){
-        size=2;
+        //size=2;
         growX=0.7;
         speed = 1.25;
         growY=growX*growX;
       }else if (mySettings.screenShape != 1){
-        size=0;
+        //size=0;
         growX=0.5;
         speed = 0.9;
         growY=0.5;
       }else{
-        size=0;
+        //size=0;
         growX=0.8;
         speed =1;
         growY=1.2;
