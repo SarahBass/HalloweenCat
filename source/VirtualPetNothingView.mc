@@ -228,7 +228,7 @@ if (userSTEPS>=3000){}else{
 }
   if (System.getDeviceSettings().screenHeight < 301){
     wordFont =  WatchUi.loadResource( Rez.Fonts.xsmallFont );
-    dc.setColor(0xFFE900, Graphics.COLOR_TRANSPARENT);
+    dc.setColor(0xA0DF6A, Graphics.COLOR_TRANSPARENT);
         dc.drawText(centerX,centerY*1.45,xsmall,(weekdayArray[today.day_of_week]+" , "+ monthArray[today.month]+" "+ today.day +" " +today.year), Graphics.TEXT_JUSTIFY_CENTER );
         dc.setColor(0xFFFFFF, Graphics.COLOR_TRANSPARENT);
        dc.drawText(centerX,  centerY*0.87,LargeFont, timeString,  Graphics.TEXT_JUSTIFY_CENTER  );
@@ -317,9 +317,10 @@ frog.draw(dc);}
  
 }else{
 dog.draw(dc);
+if (System.getDeviceSettings().screenHeight < 301){}else{   
 if (today.min%20 == 0|| (today.min%20 == 2)|| (today.min%20 == 3)|| (today.min%20 == 4)|| (today.min%20 == 5)){
 ghost1.draw(dc);
-ghost2.draw(dc);}
+ghost2.draw(dc);}}
 
 }     
         
@@ -379,9 +380,9 @@ var size = 0;
 //var speed =1;     
       if (System.getDeviceSettings().screenHeight < 301){
         size =1;
-        growX=1;
+        growX=1.2;
         //speed = 0.6;
-        growY=1;
+        growY=1.2;
       }else if (System.getDeviceSettings().screenHeight >= 390){
         size=2;
         growX=0.7;
@@ -622,9 +623,9 @@ var growY = 1;
 var speed =1;     
       if (System.getDeviceSettings().screenHeight < 301){
         //size =1;
-        growX=1;
+        growX=1.2;
         speed = 0.6;
-        growY=1;
+        growY=1.2;
       }else if (System.getDeviceSettings().screenHeight >= 390){
         //size=2;
         growX=0.7;
@@ -682,9 +683,9 @@ var growY = 1;
 var speed =1;     
       if (System.getDeviceSettings().screenHeight < 301){
        // size =1;
-        growX=1;
+        growX=1.2;
         speed = 0.6;
-        growY=1;
+        growY=1.2;
       }else if (System.getDeviceSettings().screenHeight >= 390){
        // size=2;
         growX=0.7;
@@ -800,7 +801,7 @@ var growY = 1;
         growY=growX*growX;
       }else if (mySettings.screenShape != 1){
        // size=0;
-        growX=0.5;
+        growX=0.8;
         //speed = 0.9;
         growY=0.5;
       }else{
@@ -848,7 +849,7 @@ var speed =1;
         growY=growX*growX;
       }else if (mySettings.screenShape != 1){
         //size=0;
-        growX=0.5;
+        growX=0.8;
         speed = 0.9;
         growY=0.5;
       }else{
