@@ -47,7 +47,7 @@ class VirtualPetNothingView extends WatchUi.WatchFace {
  var userBattery = "-";
    if (myStats.battery != null){userBattery = Lang.format("$1$",[((myStats.battery.toNumber())).format("%2d")]);}else{userBattery="-";} 
 
-   var userSTEPS = 0;
+   var userSTEPS = 4000;
    //if (info.steps != null){userSTEPS = info.steps.toNumber();}else{userSTEPS=0;} 
 
   var userNotify = "-";
@@ -142,11 +142,15 @@ else{userHEART = getHeartRate().toString();}
        var stars1 = dogPhase5(today.sec); 
        var stars2 = dogPhase6(today.sec); 
        var frog = dogPhase7(today.sec); 
+          var owl = dogPhase8(today.sec); 
+             var bat = dogPhase9(today.sec); 
+             var candy = dogPhase10(today.sec); 
+             var apple = dogPhase11(today.sec); 
        var dog = dogPhase(today.sec, today.min);
        var object = dogPhase2(today.sec, today.min);
        var smallFont =  WatchUi.loadResource( Rez.Fonts.WeatherFont );
        var wordFont =  WatchUi.loadResource( Rez.Fonts.smallFont );
-       var LargeFont =  WatchUi.loadResource( Rez.Fonts.largeFont );
+       var LargeFont =  WatchUi.loadResource( Rez.Fonts.WeatherFont );
        var small =  WatchUi.loadResource( Rez.Fonts.smallFont );
        var xsmall =  WatchUi.loadResource( Rez.Fonts.xsmallFont );
        var flash = centerY*1.8;
@@ -262,7 +266,8 @@ dc.drawText(centerX, centerY*1.7, small, (" a "), Graphics.TEXT_JUSTIFY_RIGHT );
       if (userSTEPS>=3000){dc.setColor(0xFDF6FD, Graphics.COLOR_TRANSPARENT);}else{dc.setColor(0xFF6E3FD, Graphics.COLOR_TRANSPARENT);}
        dc.drawText(centerX,  centerY*1.35,LargeFont, timeString,  Graphics.TEXT_JUSTIFY_CENTER  );
        dc.setColor(0xFFE900, Graphics.COLOR_TRANSPARENT);
-       dc.drawText(centerX,centerY*1.2,wordFont,(weekdayArray[today.day_of_week]+" , "+ monthArray[today.month]+" "+ today.day +" " +today.year), Graphics.TEXT_JUSTIFY_CENTER );
+       if (mySettings.screenShape != 1){dc.drawText(centerX,centerY*1.3,wordFont,(weekdayArray[today.day_of_week]+" , "+ monthArraySQ[today.month]+" "+ today.day +" " +today.year), Graphics.TEXT_JUSTIFY_CENTER );}else{dc.drawText(centerX,centerY*1.2,wordFont,(weekdayArray[today.day_of_week]+" , "+ monthArray[today.month]+" "+ today.day +" " +today.year), Graphics.TEXT_JUSTIFY_CENTER );} 
+       
 
 if (today.sec%20==0 ||today.sec%20==1){
 dc.setColor(0xFFB200, Graphics.COLOR_TRANSPARENT);
@@ -312,15 +317,29 @@ if (System.getDeviceSettings().screenHeight < 301){}else{
         stars2.draw(dc);}
 
 
-if (today.min%10 == 0|| (today.min%10 == 1)|| (today.min%10 == 2)|| (today.min%10 == 3)){
+if (today.min%30 == 0|| (today.min%30 == 1)|| (today.min%30 == 2)|| (today.min%30 == 3)){
 frog.draw(dc);}
  
+if (today.min%30 == 10|| (today.min%30 == 11)|| (today.min%30 == 12)|| (today.min%30 == 13)){
+owl.draw(dc);}
+
+if (today.min%30 == 20|| (today.min%30 == 21)|| (today.min%30 == 22)|| (today.min%30 == 23)){
+candy.draw(dc);}
+
+if (today.min%30 == 26|| (today.min%30 == 27)|| (today.min%30 == 28)|| (today.min%30 == 29)){
+apple.draw(dc);}
+
 }else{
 dog.draw(dc);
-if (System.getDeviceSettings().screenHeight < 301){}else{   
-//if (today.min%20 == 0|| (today.min%20 == 2)|| (today.min%20 == 3)|| (today.min%20 == 4)|| (today.min%20 == 5)){
+if (System.getDeviceSettings().screenHeight < 301){
+
+if ((today.min%20 == 0)|| (today.min%20 == 1)|| (today.min%20 == 2)|| (today.min%20 == 3)|| (today.min%20 == 4)|| (today.min%20 == 5)){
+bat.draw(dc);}
+
+}else{   
+if ((today.min%20 == 0)|| (today.min%20 == 1)|| (today.min%20 == 2)|| (today.min%20 == 3)|| (today.min%20 == 4)|| (today.min%20 == 5)){
 ghost1.draw(dc);
-ghost2.draw(dc);//}
+ghost2.draw(dc);}
 }
 
 }     
@@ -383,7 +402,7 @@ var size = 0;
         size =1;
         growX=1.2;
         //speed = 0.6;
-        growY=1.2;
+        growY=2;
       }else if (System.getDeviceSettings().screenHeight >= 390){
         size=2;
         growX=0.7;
@@ -400,7 +419,7 @@ var size = 0;
         //speed =1;
         growY=1.2;
       }
-  var venus2X = mySettings.screenHeight *0.17*growX;
+  var venus2X = mySettings.screenWidth *0.17*growX;
  //if (seconds>=35){venus2X=mySettings.screenHeight *0.17*growX;}else {if(seconds>=25){venus2X=(mySettings.screenWidth*2.5)-((seconds%35)*25*speed);}else{venus2X=(mySettings.screenWidth)-((seconds%35)*25*speed);}}
   var venus2Y =  mySettings.screenHeight *0.03*growY ;
   var dogARRAY;
@@ -505,7 +524,7 @@ var size = 0;
         size =1;
         growX=1.2;
         //speed = 0.6;
-        growY=1.2;
+        growY=1;
       }else if (System.getDeviceSettings().screenHeight >= 390){
         size=2;
         growX=0.7;
@@ -522,9 +541,9 @@ var size = 0;
       //  speed =1;
         growY=1.2;
       }
-  var venus2X = mySettings.screenHeight *0.17*growX;
+  var venus2X = mySettings.screenWidth *0.17*growX;
  //if (seconds>=35){venus2X=mySettings.screenHeight *0.17*growX;}else {if(seconds>=25){venus2X=(mySettings.screenWidth*2.5)-((seconds%35)*25*speed);}else{venus2X=(mySettings.screenWidth)-((seconds%35)*25*speed);}}
-  var venus2Y =  mySettings.screenHeight *0.03*growY ;
+  var venus2Y =  mySettings.screenHeight *0.1 *growY ;
   var dogARRAY;
 if (size == 1){
  dogARRAY = [
@@ -631,7 +650,7 @@ var speed =1;
         //size=2;
         growX=0.7;
         speed = 1.25;
-        growY=growX*growX;
+        growY=1.7;
       }else if (mySettings.screenShape != 1){
         //size=0;
         growX=0.5;
@@ -689,9 +708,9 @@ var speed =1;
         growY=1.2;
       }else if (System.getDeviceSettings().screenHeight >= 390){
        // size=2;
-        growX=0.7;
+        growX=0.9;
         speed = 1.25;
-        growY=growX*growX;
+        growY=1.7;
       }else if (mySettings.screenShape != 1){
        // size=0;
         growX=0.8;
@@ -748,10 +767,9 @@ var growY = 1;
         //speed = 0.6;
         growY=0.4;
       }else if (System.getDeviceSettings().screenHeight >= 390){
-        //size=2;
         growX=0.7;
         //speed = 1.25;
-        growY=growX*growX;
+        growY=1.2;
       }else if (mySettings.screenShape != 1){
         //size=0;
         growX=0.5;
@@ -796,10 +814,9 @@ var growY = 1;
         //speed = 0.6;
         growY=0.3;
       }else if (System.getDeviceSettings().screenHeight >= 390){
-       // size=2;
-        growX=0.7;
+        growX=0.9;
         //speed = 1.25;
-        growY=growX*growX;
+        growY=1.2;
       }else if (mySettings.screenShape != 1){
        // size=0;
         growX=0.8;
@@ -874,5 +891,169 @@ return dogARRAY;
 }
 
 
+function dogPhase8(seconds){
+  var mySettings = System.getDeviceSettings();
+ var growX = 1; //0.75 for grow large 1.25 for shrink small 1 for normal or square
+var growY = 1;
+//var size = 0;
+var speed =1;     
+      if (System.getDeviceSettings().screenHeight < 301){
+       // size =1;
+        growX=0.8;
+        speed = 0.6;
+        growY=1;
+      }else if (System.getDeviceSettings().screenHeight >= 390){
+        //size=2;
+        growX=0.7;
+        speed = 1.25;
+        growY=growX*growX;
+      }else if (mySettings.screenShape != 1){
+        //size=0;
+        growX=0.8;
+        speed = 0.9;
+        growY=0.5;
+      }else{
+        //size=0;
+        growX=0.8;
+        speed =1;
+        growY=1.2;
+      }
+var venus2X;
+ if (seconds>=35){venus2X = (mySettings.screenHeight *0.75*growX);}else {if(seconds>=25){venus2X=(mySettings.screenWidth*2.5)-((seconds%35)*25*speed);}else{venus2X=(mySettings.screenWidth)-((seconds%35)*25*speed);}}
+  var venus2Y =  (mySettings.screenHeight *0.03*growY)+((seconds%2)*2) ;
+  var dogARRAY =  (new WatchUi.Bitmap({
+            :rezId=>Rez.Drawables.owl,
+            :locX=> venus2X,
+            :locY=>venus2Y
+        }));
+
+
+
+return dogARRAY;
+}
+
+
+function dogPhase9(seconds){
+  var mySettings = System.getDeviceSettings();
+ var growX = 1; //0.75 for grow large 1.25 for shrink small 1 for normal or square
+var growY = 1;
+//var size = 0;
+var speed =1;     
+      if (System.getDeviceSettings().screenHeight < 301){
+       // size =1;
+        growX=0.8;
+        speed = 0.6;
+        growY=1;
+      }else if (System.getDeviceSettings().screenHeight >= 390){
+        //size=2;
+        growX=0.7;
+        speed = 1.25;
+        growY=growX*growX;
+      }else if (mySettings.screenShape != 1){
+        //size=0;
+        growX=0.8;
+        speed = 0.9;
+        growY=0.5;
+      }else{
+        //size=0;
+        growX=0.8;
+        speed =1;
+        growY=1.2;
+      }
+var venus2X;
+ if (seconds>=35){venus2X = (mySettings.screenHeight *0.75*growX);}else {if(seconds>=25){venus2X=(mySettings.screenWidth*2.5)-((seconds%35)*25*speed);}else{venus2X=(mySettings.screenWidth)-((seconds%35)*25*speed);}}
+  var venus2Y =  (mySettings.screenHeight *0.03*growY)+((seconds%2)*2) ;
+  var dogARRAY =  (new WatchUi.Bitmap({
+            :rezId=>Rez.Drawables.bat,
+            :locX=> venus2X,
+            :locY=>venus2Y
+        }));
+
+return dogARRAY;
+}
+
+
+function dogPhase10(seconds){
+  var mySettings = System.getDeviceSettings();
+ var growX = 1; //0.75 for grow large 1.25 for shrink small 1 for normal or square
+var growY = 1;
+//var size = 0;
+var speed =1;     
+      if (System.getDeviceSettings().screenHeight < 301){
+       // size =1;
+        growX=0.8;
+        speed = 0.6;
+        growY=1;
+      }else if (System.getDeviceSettings().screenHeight >= 390){
+        //size=2;
+        growX=0.7;
+        speed = 1.25;
+        growY=growX*growX;
+      }else if (mySettings.screenShape != 1){
+        //size=0;
+        growX=0.8;
+        speed = 0.9;
+        growY=0.5;
+      }else{
+        //size=0;
+        growX=0.8;
+        speed =1;
+        growY=1.2;
+      }
+var venus2X;
+ if (seconds>=35){venus2X = (mySettings.screenHeight *0.75*growX);}else {if(seconds>=25){venus2X=(mySettings.screenWidth*2.5)-((seconds%35)*25*speed);}else{venus2X=(mySettings.screenWidth)-((seconds%35)*25*speed);}}
+  var venus2Y =  (mySettings.screenHeight *0.03*growY)+((seconds%2)*2) ;
+  var dogARRAY =  (new WatchUi.Bitmap({
+            :rezId=>Rez.Drawables.candy,
+            :locX=> venus2X,
+            :locY=>venus2Y
+        }));
+
+
+
+return dogARRAY;
+}
+
+
+function dogPhase11(seconds){
+  var mySettings = System.getDeviceSettings();
+ var growX = 1; //0.75 for grow large 1.25 for shrink small 1 for normal or square
+var growY = 1;
+//var size = 0;
+var speed =1;     
+      if (System.getDeviceSettings().screenHeight < 301){
+       // size =1;
+        growX=0.8;
+        speed = 0.6;
+        growY=1;
+      }else if (System.getDeviceSettings().screenHeight >= 390){
+        //size=2;
+        growX=0.7;
+        speed = 1.25;
+        growY=growX*growX;
+      }else if (mySettings.screenShape != 1){
+        //size=0;
+        growX=0.8;
+        speed = 0.9;
+        growY=0.5;
+      }else{
+        //size=0;
+        growX=0.8;
+        speed =1;
+        growY=1.2;
+      }
+var venus2X;
+ if (seconds>=35){venus2X = (mySettings.screenHeight *0.75*growX);}else {if(seconds>=25){venus2X=(mySettings.screenWidth*2.5)-((seconds%35)*25*speed);}else{venus2X=(mySettings.screenWidth)-((seconds%35)*25*speed);}}
+  var venus2Y =  (mySettings.screenHeight *0.03*growY)+((seconds%2)*2) ;
+  var dogARRAY =  (new WatchUi.Bitmap({
+            :rezId=>Rez.Drawables.apple,
+            :locX=> venus2X,
+            :locY=>venus2Y
+        }));
+
+
+
+return dogARRAY;
+}
 
 }
