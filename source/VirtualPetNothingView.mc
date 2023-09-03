@@ -48,7 +48,7 @@ class VirtualPetNothingView extends WatchUi.WatchFace {
    if (myStats.battery != null){userBattery = Lang.format("$1$",[((myStats.battery.toNumber())).format("%2d")]);}else{userBattery="-";} 
 
    var userSTEPS = 4000;
-   //if (info.steps != null){userSTEPS = info.steps.toNumber();}else{userSTEPS=0;} 
+  // if (info.steps != null){userSTEPS = info.steps.toNumber();}else{userSTEPS=0;} 
 
   var userNotify = "-";
    if (mySettings.notificationCount != null){userNotify = Lang.format("$1$",[((mySettings.notificationCount.toNumber())).format("%2d")]);}else{userNotify="-";} 
@@ -266,7 +266,7 @@ dc.drawText(centerX, centerY*1.7, small, (" a "), Graphics.TEXT_JUSTIFY_RIGHT );
       if (userSTEPS>=3000){dc.setColor(0xFDF6FD, Graphics.COLOR_TRANSPARENT);}else{dc.setColor(0xFF6E3FD, Graphics.COLOR_TRANSPARENT);}
        dc.drawText(centerX,  centerY*1.35,LargeFont, timeString,  Graphics.TEXT_JUSTIFY_CENTER  );
        dc.setColor(0xFFE900, Graphics.COLOR_TRANSPARENT);
-       if (today.month == 9 || today.month == 11|| today.month == 12 ){dc.drawText(centerX,centerY*1.3,wordFont,(weekdayArray[today.day_of_week]+" , "+ monthArraySQ[today.month]+" "+ today.day +" " +today.year), Graphics.TEXT_JUSTIFY_CENTER );}else{dc.drawText(centerX,centerY*1.3,wordFont,(weekdayArray[today.day_of_week]+" , "+ monthArray[today.month]+" "+ today.day +" " +today.year), Graphics.TEXT_JUSTIFY_CENTER );} 
+       if ( (System.getDeviceSettings().screenHeight < 360) && (today.month == 9 || today.month == 11|| today.month == 12) ){dc.drawText(centerX,centerY*1.3,wordFont,(weekdayArray[today.day_of_week]+" , "+ monthArraySQ[today.month]+" "+ today.day +" " +today.year), Graphics.TEXT_JUSTIFY_CENTER );}else{dc.drawText(centerX,centerY*1.3,wordFont,(weekdayArray[today.day_of_week]+" , "+ monthArray[today.month]+" "+ today.day +" " +today.year), Graphics.TEXT_JUSTIFY_CENTER );} 
        
 
 if (today.sec%20==0 ||today.sec%20==1){
@@ -402,7 +402,7 @@ var size = 0;
         size =1;
         growX=1.2;
         //speed = 0.6;
-        growY=2;
+        growY=1.1;
       } else if (System.getDeviceSettings().screenHeight == 260){
         size =1;
         growX=1.4;
@@ -412,7 +412,7 @@ var size = 0;
         size=2;
         growX=0.7;
         //speed = 1.25;
-        growY=1.1;
+        growY=0.6;
       }else if (mySettings.screenShape != 1){
         size=0;
         growX=0.5;
@@ -529,7 +529,7 @@ var size = 0;
         size =1;
         growX=1.2;
         //speed = 0.6;
-        growY=2;
+        growY=1.1;
       } else if (System.getDeviceSettings().screenHeight == 260){
         size =1;
         growX=1.4;
@@ -539,7 +539,7 @@ var size = 0;
         size=2;
         growX=0.7;
        // speed = 1.25;
-        growY=1;
+        growY=0.6;
       }else if (mySettings.screenShape != 1){
         size=0;
         growX=0.5;
