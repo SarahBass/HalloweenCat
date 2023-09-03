@@ -48,7 +48,7 @@ class VirtualPetNothingView extends WatchUi.WatchFace {
    if (myStats.battery != null){userBattery = Lang.format("$1$",[((myStats.battery.toNumber())).format("%2d")]);}else{userBattery="-";} 
 
    var userSTEPS = 4000;
-   if (info.steps != null){userSTEPS = info.steps.toNumber();}else{userSTEPS=0;} 
+   //if (info.steps != null){userSTEPS = info.steps.toNumber();}else{userSTEPS=0;} 
 
   var userNotify = "-";
    if (mySettings.notificationCount != null){userNotify = Lang.format("$1$",[((mySettings.notificationCount.toNumber())).format("%2d")]);}else{userNotify="-";} 
@@ -398,11 +398,16 @@ function dogPhase(seconds, minutes){
 var growY = 1;
 var size = 0;
 //var speed =1;     
-      if (System.getDeviceSettings().screenHeight < 301){
+      if (System.getDeviceSettings().screenHeight == 218){
         size =1;
         growX=1.2;
         //speed = 0.6;
         growY=2;
+      } else if (System.getDeviceSettings().screenHeight == 260){
+        size =1;
+        growX=1.4;
+        //speed = 0.6;
+        growY=1.5;
       }else if (System.getDeviceSettings().screenHeight >= 390){
         size=2;
         growX=0.7;
@@ -520,11 +525,16 @@ function dogPhase2(seconds, minutes){
 var growY = 1;
 var size = 0;
 //var speed =1;     
-      if (System.getDeviceSettings().screenHeight < 301){
+      if (System.getDeviceSettings().screenHeight == 218){
         size =1;
         growX=1.2;
         //speed = 0.6;
-        growY=1;
+        growY=2;
+      } else if (System.getDeviceSettings().screenHeight == 260){
+        size =1;
+        growX=1.4;
+        //speed = 0.6;
+        growY=1.5;
       }else if (System.getDeviceSettings().screenHeight >= 390){
         size=2;
         growX=0.7;
