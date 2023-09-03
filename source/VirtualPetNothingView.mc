@@ -48,7 +48,7 @@ class VirtualPetNothingView extends WatchUi.WatchFace {
    if (myStats.battery != null){userBattery = Lang.format("$1$",[((myStats.battery.toNumber())).format("%2d")]);}else{userBattery="-";} 
 
    var userSTEPS = 4000;
-   //if (info.steps != null){userSTEPS = info.steps.toNumber();}else{userSTEPS=0;} 
+   if (info.steps != null){userSTEPS = info.steps.toNumber();}else{userSTEPS=0;} 
 
   var userNotify = "-";
    if (mySettings.notificationCount != null){userNotify = Lang.format("$1$",[((mySettings.notificationCount.toNumber())).format("%2d")]);}else{userNotify="-";} 
@@ -266,7 +266,7 @@ dc.drawText(centerX, centerY*1.7, small, (" a "), Graphics.TEXT_JUSTIFY_RIGHT );
       if (userSTEPS>=3000){dc.setColor(0xFDF6FD, Graphics.COLOR_TRANSPARENT);}else{dc.setColor(0xFF6E3FD, Graphics.COLOR_TRANSPARENT);}
        dc.drawText(centerX,  centerY*1.35,LargeFont, timeString,  Graphics.TEXT_JUSTIFY_CENTER  );
        dc.setColor(0xFFE900, Graphics.COLOR_TRANSPARENT);
-       if (mySettings.screenShape != 1){dc.drawText(centerX,centerY*1.3,wordFont,(weekdayArray[today.day_of_week]+" , "+ monthArraySQ[today.month]+" "+ today.day +" " +today.year), Graphics.TEXT_JUSTIFY_CENTER );}else{dc.drawText(centerX,centerY*1.2,wordFont,(weekdayArray[today.day_of_week]+" , "+ monthArray[today.month]+" "+ today.day +" " +today.year), Graphics.TEXT_JUSTIFY_CENTER );} 
+       if (today.month == 9 || today.month == 11|| today.month == 12 ){dc.drawText(centerX,centerY*1.3,wordFont,(weekdayArray[today.day_of_week]+" , "+ monthArraySQ[today.month]+" "+ today.day +" " +today.year), Graphics.TEXT_JUSTIFY_CENTER );}else{dc.drawText(centerX,centerY*1.3,wordFont,(weekdayArray[today.day_of_week]+" , "+ monthArray[today.month]+" "+ today.day +" " +today.year), Graphics.TEXT_JUSTIFY_CENTER );} 
        
 
 if (today.sec%20==0 ||today.sec%20==1){
@@ -407,7 +407,7 @@ var size = 0;
         size=2;
         growX=0.7;
         //speed = 1.25;
-        growY=growX*growX;
+        growY=1.1;
       }else if (mySettings.screenShape != 1){
         size=0;
         growX=0.5;
@@ -417,11 +417,11 @@ var size = 0;
         size=0;
         growX=0.8;
         //speed =1;
-        growY=1.2;
+        growY=0.7;
       }
   var venus2X = mySettings.screenWidth *0.17*growX;
  //if (seconds>=35){venus2X=mySettings.screenHeight *0.17*growX;}else {if(seconds>=25){venus2X=(mySettings.screenWidth*2.5)-((seconds%35)*25*speed);}else{venus2X=(mySettings.screenWidth)-((seconds%35)*25*speed);}}
-  var venus2Y =  mySettings.screenHeight *0.03*growY ;
+  var venus2Y =  mySettings.screenHeight *0.1*growY ;
   var dogARRAY;
 if (size == 1){
  dogARRAY = [
@@ -529,7 +529,7 @@ var size = 0;
         size=2;
         growX=0.7;
        // speed = 1.25;
-        growY=growX*growX;
+        growY=1;
       }else if (mySettings.screenShape != 1){
         size=0;
         growX=0.5;
@@ -539,7 +539,7 @@ var size = 0;
         size=0;
         growX=0.8;
       //  speed =1;
-        growY=1.2;
+        growY=0.7;
       }
   var venus2X = mySettings.screenWidth *0.17*growX;
  //if (seconds>=35){venus2X=mySettings.screenHeight *0.17*growX;}else {if(seconds>=25){venus2X=(mySettings.screenWidth*2.5)-((seconds%35)*25*speed);}else{venus2X=(mySettings.screenWidth)-((seconds%35)*25*speed);}}
