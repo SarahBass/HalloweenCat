@@ -48,7 +48,7 @@ class VirtualPetNothingView extends WatchUi.WatchFace {
    if (myStats.battery != null){userBattery = Lang.format("$1$",[((myStats.battery.toNumber())).format("%2d")]);}else{userBattery="-";} 
 
    var userSTEPS = 4000;
-  // if (info.steps != null){userSTEPS = info.steps.toNumber();}else{userSTEPS=0;} 
+   if (info.steps != null){userSTEPS = info.steps.toNumber();}else{userSTEPS=0;} 
 
   var userNotify = "-";
    if (mySettings.notificationCount != null){userNotify = Lang.format("$1$",[((mySettings.notificationCount.toNumber())).format("%2d")]);}else{userNotify="-";} 
@@ -408,7 +408,17 @@ var size = 0;
         growX=1.4;
         //speed = 0.6;
         growY=1.5;
-      }else if (System.getDeviceSettings().screenHeight >= 390){
+      }else if (System.getDeviceSettings().screenHeight == 390){
+        size=2;
+        growX=0.7;
+        //speed = 1.25;
+        growY=0.6;
+      }else if (System.getDeviceSettings().screenHeight == 416){
+        size=2;
+        growX=0.8;
+        //speed = 1.25;
+        growY=0.6;
+      }else if (System.getDeviceSettings().screenHeight == 454){
         size=2;
         growX=0.7;
         //speed = 1.25;
@@ -535,10 +545,20 @@ var size = 0;
         growX=1.4;
         //speed = 0.6;
         growY=1.5;
-      }else if (System.getDeviceSettings().screenHeight >= 390){
+      }else if (System.getDeviceSettings().screenHeight == 390){
         size=2;
         growX=0.7;
-       // speed = 1.25;
+        //speed = 1.25;
+        growY=0.6;
+      }else if (System.getDeviceSettings().screenHeight == 416){
+        size=2;
+        growX=0.8;
+        //speed = 1.25;
+        growY=0.5;
+      }else if (System.getDeviceSettings().screenHeight == 454){
+        size=2;
+        growX=0.7;
+        //speed = 1.25;
         growY=0.6;
       }else if (mySettings.screenShape != 1){
         size=0;
@@ -548,7 +568,7 @@ var size = 0;
       }else{
         size=0;
         growX=0.8;
-      //  speed =1;
+        //speed =1;
         growY=0.7;
       }
   var venus2X = mySettings.screenWidth *0.17*growX;
