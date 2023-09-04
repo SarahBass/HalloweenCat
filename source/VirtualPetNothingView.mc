@@ -48,7 +48,7 @@ class VirtualPetNothingView extends WatchUi.WatchFace {
    if (myStats.battery != null){userBattery = Lang.format("$1$",[((myStats.battery.toNumber())).format("%2d")]);}else{userBattery="-";} 
 
    var userSTEPS = 4000;
-   if (info.steps != null){userSTEPS = info.steps.toNumber();}else{userSTEPS=0;} 
+   //if (info.steps != null){userSTEPS = info.steps.toNumber();}else{userSTEPS=0;} 
 
   var userNotify = "-";
    if (mySettings.notificationCount != null){userNotify = Lang.format("$1$",[((mySettings.notificationCount.toNumber())).format("%2d")]);}else{userNotify="-";} 
@@ -419,8 +419,8 @@ var size = 0;
         //speed = 1.25;
         growY=0.6;
       }else if (System.getDeviceSettings().screenHeight == 454){
-        size=2;
-        growX=0.7;
+          size=2;
+        growX=0.8;
         //speed = 1.25;
         growY=0.6;
       }else if (mySettings.screenShape != 1){
@@ -557,7 +557,7 @@ var size = 0;
         growY=0.5;
       }else if (System.getDeviceSettings().screenHeight == 454){
         size=2;
-        growX=0.7;
+        growX=0.8;
         //speed = 1.25;
         growY=0.6;
       }else if (mySettings.screenShape != 1){
