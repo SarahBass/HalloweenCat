@@ -408,11 +408,11 @@ var size = 0;
         growX=1.4;
         //speed = 0.6;
         growY=1.5;
-      }else if (System.getDeviceSettings().screenHeight == 390){
+      }else if (System.getDeviceSettings().screenHeight > 360 && System.getDeviceSettings().screenHeight < 415){
         size=2;
         growX=0.7;
         //speed = 1.25;
-        growY=0.6;
+        growY=0.1;
       }else if (System.getDeviceSettings().screenHeight == 416){
         size=2;
         growX=0.8;
@@ -545,11 +545,11 @@ var size = 0;
         growX=1.4;
         //speed = 0.6;
         growY=1.5;
-      }else if (System.getDeviceSettings().screenHeight == 390){
+      }else if (System.getDeviceSettings().screenHeight > 360 && System.getDeviceSettings().screenHeight < 415){
         size=2;
         growX=0.7;
         //speed = 1.25;
-        growY=0.6;
+        growY=0.1;
       }else if (System.getDeviceSettings().screenHeight == 416){
         size=2;
         growX=0.8;
